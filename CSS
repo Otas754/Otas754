@@ -1,10 +1,10 @@
 body {
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #343a40;
+    line-height: 1.7;
 }
 
 .container {
@@ -13,10 +13,14 @@ body {
     padding: 20px;
 }
 
+/* Header */
 header {
-    background-color: #333;
+    background-color: #212529;
     color: #fff;
     padding: 1em 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 header .container {
@@ -25,9 +29,21 @@ header .container {
     align-items: center;
 }
 
-header h1 a {
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.logo a {
     color: #fff;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 30px;
+    margin-right: 10px;
 }
 
 nav ul {
@@ -44,151 +60,149 @@ nav ul li {
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-main section {
-    padding: 40px 0;
+nav ul li a:hover {
+    color: #007bff;
 }
 
-#hero {
-    background-color: #e0f7fa;
-    text-align: center;
-    padding: 80px 0;
-}
-
-#hero h2 {
-    font-size: 2.5em;
-    margin-bottom: 15px;
-}
-
-.button {
-    display: inline-block;
+nav ul li.cta a {
     background-color: #007bff;
     color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
+    padding: 0.7em 1.5em;
     border-radius: 5px;
-    margin-top: 20px;
 }
 
-.button:hover {
+nav ul li.cta a:hover {
     background-color: #0056b3;
 }
 
-.button-secondary {
-    display: inline-block;
-    background-color: #6c757d;
-    color: #fff;
-    padding: 8px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 10px;
 }
 
-.button-secondary:hover {
-    background-color: #545b62;
+.hamburger span {
+    height: 2px;
+    width: 25px;
+    background: #fff;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    transition: transform 0.3s ease;
 }
 
-.dashboard-widgets {
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #e9ecef;
+    padding: 80px 0;
+}
+
+.hero-content {
+    text-align: left;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    color: #212529;
+}
+
+.hero-content p {
+    font-size: 1.1em;
+    color: #495057;
+    margin-bottom: 30px;
+}
+
+.hero-buttons a {
+    margin-right: 15px;
+}
+
+.hero-image {
+    display: none; /* Hide on smaller screens */
+}
+
+/* Dashboard Section */
+.dashboard-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.dashboard-widgets-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-.widget {
+.widget.card {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .widget h3 {
     margin-top: 0;
-}
-
-.metric-value {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #007bff;
-}
-
-.tool-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.tool-item {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.tool-item h3 {
-    margin-top: 0;
-}
-
-#reports ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
-
-#reports ul li {
+    color: #343a40;
     margin-bottom: 10px;
 }
 
-#reports ul li a {
+.metric-value {
+    font-size: 1.8em;
+    font-weight: bold;
     color: #007bff;
-    text-decoration: none;
+    margin-bottom: 5px;
 }
 
-#reports ul li a:hover {
-    text-decoration: underline;
+.widget small {
+    color: #6c757d;
 }
 
-#contact form {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+.widget ul {
+    list-style: none;
+    padding: 0;
 }
 
-#contact input,
-#contact textarea {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
+.widget ul li {
+    margin-bottom: 8px;
+    color: #495057;
+}
+
+.progress-bar {
+    background-color: #e0e0e0;
     border-radius: 5px;
-    font-size: 1em;
+    height: 20px;
+    margin-top: 10px;
+    overflow: hidden;
 }
 
-#contact button[type="submit"] {
+.progress {
     background-color: #28a745;
     color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-#contact button[type="submit"]:hover {
-    background-color: #1e7e34;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
+    height: 100%;
+    line-height: 20px;
     text-align: center;
-    padding: 1em 0;
-    position: static;
-    bottom: 0;
-    width: 100%;
+    border-radius: 5px;
 }
+
+/* Analysis Section */
+.analysis-section {
+    padding:
